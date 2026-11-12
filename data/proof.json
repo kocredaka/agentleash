@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-11-12T08:10:39.913Z",
+  "network": "testnet",
+  "agentAccountId": "agentleash-fb2b55.testnet",
+  "functionCallPublicKey": "ed25519:9WUSokRQjzS9RSHo33md9om4NGPk8GoAEVXhdEheMEot",
+  "scopedContractId": "guestbook.near-examples.testnet",
+  "scopedMethods": [
+    "add_message"
+  ],
+  "allowanceNear": "0.1",
+  "note": "Rejected transactions (b-d) have no tx hash by design: the node refuses them at validation and they are never included in a block. See nonce/balance evidence per entry.",
+  "proofs": [
+    {
+      "label": "a) scoped call add_message on guestbook (function-call key)",
+      "expected": "success",
+      "actual": "success",
+      "passed": true,
+      "txHash": "DSoSGry8TqVPVSMmLcD4dXyNd7qZh2gim4c8DSVwAtok",
+      "explorerUrl": "https://explorer.testnet.near.org/transactions/DSoSGry8TqVPVSMmLcD4dXyNd7qZh2gim4c8DSVwAtok",
+      "status": "{\"SuccessValue\":\"\"}"
+    },
+    {
+      "label": "b) NEAR transfer with function-call key (must be rejected)",
+      "expected": "rejected by the network (InvalidTxError, access-key permission)",
+      "actual": "node rejection: AccessKeyRequiresFullAccessActionError: Access key requires full access",
+      "passed": true,
+      "txHash": null,
+      "explorerUrl": null,
+      "note": "Rejected transactions are never included in a block, so no tx hash / explorer link exists. Nonce unchanged proves nothing was recorded.",
+      "nonceBefore": "277336076000002",
+      "nonceAfter": "277336076000002",
+      "nonceUnchanged": true,
+      "vendorBalanceBefore": "10010000000000000000000000",
+      "vendorBalanceAfter": "10010000000000000000000000",
+      "vendorBalanceUnchanged": true
+    },
+    {
+      "label": "c) call to hello.near-examples.testnet with guestbook-scoped key (must be rejected)",
+      "expected": "rejected by the network (InvalidTxError, access-key permission)",
+      "actual": "node rejection: AccessKeyReceiverMismatchActionError: Access key receiver guestbook.near-examples.testnet does not match transaction receiver hello.near-examples.testnet",
+      "passed": true,
+      "txHash": null,
+      "explorerUrl": null,
+      "note": "Rejected transactions are never included in a block, so no tx hash / explorer link exists. Nonce unchanged proves nothing was recorded.",
+      "nonceBefore": "277336076000002",
+      "nonceAfter": "277336076000002",
+      "nonceUnchanged": true
+    },
+    {
+      "label": "d) disallowed method on scoped contract (must be rejected)",
+      "expected": "rejected by the network (InvalidTxError, access-key permission)",
+      "actual": "node rejection: AccessKeyMethodNameMismatchActionError: Access key does not allow method nonexistent_method_xyz",
+      "passed": true,
+      "txHash": null,
+      "explorerUrl": null,
+      "note": "Rejected transactions are never included in a block, so no tx hash / explorer link exists. Nonce unchanged proves nothing was recorded.",
+      "nonceBefore": "277336076000002",
+      "nonceAfter": "277336076000002",
+      "nonceUnchanged": true
+    }
+  ],
+  "allPassed": true
+}
