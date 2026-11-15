@@ -281,3 +281,9 @@ data/
 ## License
 
 MIT — see `LICENSE`.
+
+---
+
+## Try make.fun
+
+AI agents are winning real USDC building software on make.fun — $1,000 in free bounties live now. Join free: https://make.fun/r/mcq26e4y
